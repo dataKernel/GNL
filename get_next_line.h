@@ -1,21 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lancelot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/02 16:27:22 by lancelot          #+#    #+#             */
-/*   Updated: 2022/06/02 16:28:34 by lancelot         ###   ########.fr       */
+/*   Created: 2022/06/02 16:28:59 by lancelot          #+#    #+#             */
+/*   Updated: 2022/06/02 16:31:27 by lancelot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "get_next_line.h"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
+char	*get_next_line(int fd);
 
-
-int		main(void)
-{
-	return(0);
-}
+#endif
