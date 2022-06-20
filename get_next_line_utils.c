@@ -6,7 +6,7 @@
 /*   By: lancelot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 18:06:20 by lancelot          #+#    #+#             */
-/*   Updated: 2022/06/04 18:07:49 by lancelot         ###   ########.fr       */
+/*   Updated: 2022/06/08 17:39:27 by lancelot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,3 @@ int	count_size_stash(fd)
 	}while(!check);
 	return(count);
 }
-

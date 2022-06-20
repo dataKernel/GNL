@@ -6,7 +6,7 @@
 /*   By: lancelot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 16:27:22 by lancelot          #+#    #+#             */
-/*   Updated: 2022/06/04 18:05:35 by lancelot         ###   ########.fr       */
+/*   Updated: 2022/06/10 11:33:11 by lancelot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@
 #include <stdio.h>
 #include <fcntl.h>
 #include <stdbool.h>
-#include <stdlib.h>
-#include <unistd.h>
 #include "get_next_line.h"
 
 //BUFFER def
@@ -37,7 +35,7 @@ char	*get_next_line(int fd)
 	//checking datas
 	printf("checking...[FD_open] -> %i\n", res_open);
 	printf("checking...[VAL_buffer] -> %s\n", buffer);
-	
+
 	return("lol");//returning shit __DATAS__(temp)
 }
 
@@ -50,4 +48,3 @@ int		main(void)
 	get_next_line(res_open);//on donne le fd a GNL
 	return(0);
 }
-
