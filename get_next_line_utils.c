@@ -6,12 +6,13 @@
 /*   By: lancelot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 18:06:20 by lancelot          #+#    #+#             */
-/*   Updated: 2022/06/08 17:39:27 by lancelot         ###   ########.fr       */
+/*   Updated: 2022/06/20 16:52:44 by lancelot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdbool.h>
 #include <unistd.h>
+#include "get_next_line.h"
 
 int	count_size_stash(fd)
 {

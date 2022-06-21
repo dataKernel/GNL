@@ -6,7 +6,7 @@
 /*   By: lancelot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 16:28:59 by lancelot          #+#    #+#             */
-/*   Updated: 2022/06/08 16:46:34 by lancelot         ###   ########.fr       */
+/*   Updated: 2022/06/20 17:14:08 by lancelot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,6 @@
 # include <stdlib.h>
 
 char	*get_next_line(int fd);
+int		count_size_stash(int);
 
 #endif

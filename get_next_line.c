@@ -6,7 +6,7 @@
 /*   By: lancelot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 16:27:22 by lancelot          #+#    #+#             */
-/*   Updated: 2022/06/10 11:33:11 by lancelot         ###   ########.fr       */
+/*   Updated: 2022/06/21 20:26:01 by lancelot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,22 +21,26 @@
 #include <stdbool.h>
 #include "get_next_line.h"
 
-//BUFFER def
-#define BUFFER_SIZE 5
-
 char	*get_next_line(int fd)
 {
-	char	*stash;
-	char	buffer[BUFFER_SIZE];
-	int		res_open;
-
-	stash = malloc(sizeof(char) * count_size_stash(fd));
-	read(fd, buffer, BUFFER_SIZE);
-	//checking datas
-	printf("checking...[FD_open] -> %i\n", res_open);
-	printf("checking...[VAL_buffer] -> %s\n", buffer);
-
-	return("lol");//returning shit __DATAS__(temp)
+	static char		*line = NULL;
+	char			buffer[BUFFER_SIZE + 1];
+	int				bytes_read;
+	
+	bytes_read = BUFFER_SIZE;
+	if(fd < 0 || fd > 1023 || BUFFER_SIZE <= 0)
+		return(-1);
+	while(bytes_readen > 0)
+	{
+		bytes_read = read(fd, buffer, bytes_read);
+		if(bytes_read == -1)
+			return(-1);
+		buffer[bytes_read] = '\0';
+		line = ft_join(line, buffer);
+		if(ft_strchr(line, '\n'))
+			break;
+	}
+	return(line);//returning the line we got
 }
 
 int		main(void)
