@@ -6,7 +6,7 @@
 /*   By: lancelot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 16:27:22 by lancelot          #+#    #+#             */
-/*   Updated: 2022/06/22 10:19:12 by lancelot         ###   ########.fr       */
+/*   Updated: 2022/06/22 10:37:15 by lancelot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@
 #include <fcntl.h>
 #include <stdbool.h>
 #include "get_next_line.h"
+
+
+//define default BUFFER
+#define BUFFER_SIZE 5
 
 char	*get_next_line(int fd)
 {
@@ -46,8 +50,11 @@ char	*get_next_line(int fd)
 int		main(void)
 {
 	int		res_open;
+	char	*result;
 
 	res_open = open("./test", O_RDONLY);
-	get_next_line(res_open);//on donne le fd a GNL
+	result = get_next_line(res_open);//on donne le fd a GNL
+	printf(" res -->%s", 
 	return(0);
 }
+
