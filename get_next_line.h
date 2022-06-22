@@ -6,7 +6,7 @@
 /*   By: lancelot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 16:28:59 by lancelot          #+#    #+#             */
-/*   Updated: 2022/06/20 17:14:08 by lancelot         ###   ########.fr       */
+/*   Updated: 2022/06/21 21:35:39 by lancelot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,10 @@
 # include <unistd.h>
 # include <stdlib.h>
 
-char	*get_next_line(int fd);
+char	*get_next_line(int);
+char	*ft_strjoin(const char, const char);
+char	*ft_strchr(const char, int);
 int		count_size_stash(int);
+
 
 #endif

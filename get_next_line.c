@@ -6,7 +6,7 @@
 /*   By: lancelot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 16:27:22 by lancelot          #+#    #+#             */
-/*   Updated: 2022/06/21 20:26:01 by lancelot         ###   ########.fr       */
+/*   Updated: 2022/06/22 10:19:12 by lancelot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ char	*get_next_line(int fd)
 
 int		main(void)
 {
-	//TODO: some test??
 	int		res_open;
 
 	res_open = open("./test", O_RDONLY);
