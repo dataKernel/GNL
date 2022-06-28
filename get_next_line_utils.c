@@ -6,15 +6,16 @@
 /*   By: lancelot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 18:06:20 by lancelot          #+#    #+#             */
-/*   Updated: 2022/06/22 10:31:48 by lancelot         ###   ########.fr       */
+/*   Updated: 2022/06/27 20:39:49 by lancelot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdbool.h>
 #include <unistd.h>
+#include <stdio.h>
 #include "get_next_line.h"
 
-size_t	ft_strlen(const char *s)
+static size_t	ft_strlen(const char *s)
 {
 	size_t		counter;
 
@@ -27,7 +28,7 @@ size_t	ft_strlen(const char *s)
 	return (counter);
 }
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+static size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
 	size_t		i;
 	size_t		count;
@@ -38,7 +39,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 	{
 		count++;
 	}
-	if (dstsize != 0)
+	if (dstsize >= 0)
 	{
 		while (src[i] != '\0' && i < (dstsize - 1))
 		{
