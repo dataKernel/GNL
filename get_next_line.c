@@ -6,7 +6,7 @@
 /*   By: lancelot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 16:27:22 by lancelot          #+#    #+#             */
-/*   Updated: 2022/06/27 20:40:01 by lancelot         ###   ########.fr       */
+/*   Updated: 2022/06/28 13:57:22 by lancelot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ char	*get_next_line(int fd)
 		line = ft_strjoin(temp_line, buffer);
 		printf("line --> %s \n", line);
 		free(temp_line);
-		//if(ft_strchr(line, '\n'))
-			//break;
+		if(ft_strchr(line, '\n'))
+			break;
 	}
 	return(line);//returning the line we got
 }

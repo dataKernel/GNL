@@ -6,7 +6,7 @@
 /*   By: lancelot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 18:06:20 by lancelot          #+#    #+#             */
-/*   Updated: 2022/06/27 20:39:49 by lancelot         ###   ########.fr       */
+/*   Updated: 2022/06/28 13:56:37 by lancelot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ static size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 
 	i = 0;
 	count = 0;
+	if(!dst || !src)
+		return(0);
 	while (src[count] != '\0')
 	{
 		count++;
@@ -58,7 +60,7 @@ char	*ft_strjoin(const char *s1, const char *s2)
 	size_t			size_s2;
 	char			*str;
 
-	if (!s1 || !s2)
+	if (!s1 && !s2)
 		return (NULL);
 	size_s1 = ft_strlen(s1);
 	size_s2 = ft_strlen(s2);
