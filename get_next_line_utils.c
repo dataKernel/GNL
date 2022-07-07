@@ -6,7 +6,7 @@
 /*   By: lancelot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 18:06:20 by lancelot          #+#    #+#             */
-/*   Updated: 2022/06/28 13:56:37 by lancelot         ###   ########.fr       */
+/*   Updated: 2022/07/06 18:25:21 by lancelot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ static size_t	ft_strlen(const char *s)
 	size_t		counter;
 
 	counter = 0;
+	if(!s)
+		return(0);
 	while (*s)
 	{
 		counter++;
@@ -73,11 +75,58 @@ char	*ft_strjoin(const char *s1, const char *s2)
 	return (str);
 }
 
+char	*ft_cut_left(char *str)
+{
+	int		i;
+	int		size_str_malloc;
+	char	*new_str;
+	
+	i = 0;
+	while(str[i] != '\n')
+		i++;
+	size_str_malloc = i + 2;
+	new_str = (char *)malloc(size_str_malloc * sizeof (char));
+	ft_strlcpy(new_str, str, size_str_malloc);
+	str[i] = '\0';
+
+	return(new_str);
+}
+
+char	*ft_cut_right(char *str)
+{
+	int		i;
+	int		size_str_malloc;
+	bool	check;
+	char	*new_str;
+
+	size_str_malloc = 0;
+	check = false;
+	i = 0;
+	while(str[i])
+	{
+		if(str[i] == '\n')
+		{
+			check = true;
+			i++;
+		}
+		if(check == true)
+			size_str_malloc++;
+		i++;
+	}
+	//check values
+	printf("size malloc --> %i\n", size_str_malloc);
+	printf("size I -------> %i\n", i);
+	printf("check --------> %i\n", check);
+	return (str);
+}
+
 char	*ft_strchr(const char *s, int c)
 {
 	char	*ptr;
 	int		i;
-
+	
+	if(!s)
+		return (NULL);
 	ptr = (char *)s;
 	i = 0;
 	while (s[i])
@@ -89,33 +138,4 @@ char	*ft_strchr(const char *s, int c)
 	if (s[i] == (char)c)
 		return (ptr + i);
 	return (NULL);
-}
-
-int	count_size_stash(fd)
-{
-	char	buffer[BUFFER_SIZE];
-	bool	check;
-	int		count;
-	int		i;
-
-	check = false;
-	count = 0;
-	do
-	{
-	read(fd, buffer, BUFFER_SIZE);
-	//check
-	i = 0;
-	while(buffer[i])
-		{
-			i++;			
-			if(buffer[i] != '\n')
-				count++;
-			else
-			{
-				check = true;
-				break;
-			}
-		}
-	}while(!check);
-	return(count);
 }

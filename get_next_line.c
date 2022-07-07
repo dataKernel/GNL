@@ -6,7 +6,7 @@
 /*   By: lancelot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 16:27:22 by lancelot          #+#    #+#             */
-/*   Updated: 2022/06/28 13:57:22 by lancelot         ###   ########.fr       */
+/*   Updated: 2022/07/07 12:52:38 by lancelot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,26 +25,27 @@ char	*get_next_line(int fd)
 {
 	static char		*line = NULL;
 	char			*temp_line;
+	char			*res;
 	char			buffer[BUFFER_SIZE + 1];
 	int				bytes_read;
 	
 	bytes_read = BUFFER_SIZE;
 	if(fd < 0 || fd > 1023 || BUFFER_SIZE <= 0)
 		return(NULL);
-	while(bytes_read > 0)
+	while(bytes_read > 0 && !ft_strchr(line, '\n'))
 	{
 		bytes_read = read(fd, buffer, bytes_read);
 		if(bytes_read == -1)
 			return(NULL);
 		buffer[bytes_read] = '\0';
 		temp_line = line;
+		printf("%s", line);
 		line = ft_strjoin(temp_line, buffer);
-		printf("line --> %s \n", line);
 		free(temp_line);
-		if(ft_strchr(line, '\n'))
-			break;
 	}
-	return(line);//returning the line we got
+	res = ft_cut_left(line);
+	ft_cut_right(line);
+	return(line);
 }
 
 int		main(void)
@@ -53,6 +54,6 @@ int		main(void)
 	char	*result;
 
 	res_open = open("./test", O_RDONLY);
-	result = get_next_line(res_open);//on donne le fd a GNL
+	get_next_line(res_open);//on donne le fd a GNL
 	return(0);
 }

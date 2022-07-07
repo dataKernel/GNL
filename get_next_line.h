@@ -6,7 +6,7 @@
 /*   By: lancelot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 16:28:59 by lancelot          #+#    #+#             */
-/*   Updated: 2022/06/22 21:27:58 by lancelot         ###   ########.fr       */
+/*   Updated: 2022/07/05 22:16:23 by lancelot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 char	*get_next_line(int);
 char	*ft_strjoin(const char*, const char*);
 char	*ft_strchr(const char*, int);
+char	*ft_cut_left(char *str);
+char	*ft_cut_right(char *str);
 int		count_size_stash(int);
 
 #endif
