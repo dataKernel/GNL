@@ -6,7 +6,7 @@
 /*   By: lancelot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 16:27:22 by lancelot          #+#    #+#             */
-/*   Updated: 2022/07/07 12:52:38 by lancelot         ###   ########.fr       */
+/*   Updated: 2022/07/07 13:02:38 by lancelot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,12 @@ char	*get_next_line(int fd)
 			return(NULL);
 		buffer[bytes_read] = '\0';
 		temp_line = line;
-		printf("%s", line);
 		line = ft_strjoin(temp_line, buffer);
 		free(temp_line);
 	}
+
 	res = ft_cut_left(line);
+	printf("%s", res);
 	ft_cut_right(line);
 	return(line);
 }

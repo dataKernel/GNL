@@ -6,7 +6,7 @@
 /*   By: lancelot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 18:06:20 by lancelot          #+#    #+#             */
-/*   Updated: 2022/07/06 18:25:21 by lancelot         ###   ########.fr       */
+/*   Updated: 2022/07/07 13:22:20 by lancelot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ char	*ft_cut_left(char *str)
 	size_str_malloc = i + 2;
 	new_str = (char *)malloc(size_str_malloc * sizeof (char));
 	ft_strlcpy(new_str, str, size_str_malloc);
-	str[i] = '\0';
+	new_str[i] = '\0';
 
 	return(new_str);
 }
@@ -96,6 +96,7 @@ char	*ft_cut_right(char *str)
 {
 	int		i;
 	int		size_str_malloc;
+	int		indice;
 	bool	check;
 	char	*new_str;
 
@@ -108,16 +109,19 @@ char	*ft_cut_right(char *str)
 		{
 			check = true;
 			i++;
+			indice = i;
 		}
 		if(check == true)
 			size_str_malloc++;
 		i++;
 	}
-	//check values
-	printf("size malloc --> %i\n", size_str_malloc);
-	printf("size I -------> %i\n", i);
-	printf("check --------> %i\n", check);
-	return (str);
+	size_str_malloc++;
+	new_str = (char *)malloc(size_str_malloc * sizeof (char));
+	ft_strlcpy(new_str, str + indice, size_str_malloc);
+	new_str[i] = '\0';
+	
+	printf("%s", new_str);
+	return (new_str);
 }
 
 char	*ft_strchr(const char *s, int c)
