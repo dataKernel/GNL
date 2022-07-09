@@ -6,7 +6,7 @@
 /*   By: lancelot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 18:06:20 by lancelot          #+#    #+#             */
-/*   Updated: 2022/07/07 13:22:20 by lancelot         ###   ########.fr       */
+/*   Updated: 2022/07/07 22:04:31 by lancelot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static size_t	ft_strlen(const char *s)
 	return (counter);
 }
 
-static size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
 	size_t		i;
 	size_t		count;
@@ -73,55 +73,6 @@ char	*ft_strjoin(const char *s1, const char *s2)
 	ft_strlcpy(str, s1, size_s1 + 1);
 	ft_strlcpy(str + size_s1, s2, size_s2 + 1);
 	return (str);
-}
-
-char	*ft_cut_left(char *str)
-{
-	int		i;
-	int		size_str_malloc;
-	char	*new_str;
-	
-	i = 0;
-	while(str[i] != '\n')
-		i++;
-	size_str_malloc = i + 2;
-	new_str = (char *)malloc(size_str_malloc * sizeof (char));
-	ft_strlcpy(new_str, str, size_str_malloc);
-	new_str[i] = '\0';
-
-	return(new_str);
-}
-
-char	*ft_cut_right(char *str)
-{
-	int		i;
-	int		size_str_malloc;
-	int		indice;
-	bool	check;
-	char	*new_str;
-
-	size_str_malloc = 0;
-	check = false;
-	i = 0;
-	while(str[i])
-	{
-		if(str[i] == '\n')
-		{
-			check = true;
-			i++;
-			indice = i;
-		}
-		if(check == true)
-			size_str_malloc++;
-		i++;
-	}
-	size_str_malloc++;
-	new_str = (char *)malloc(size_str_malloc * sizeof (char));
-	ft_strlcpy(new_str, str + indice, size_str_malloc);
-	new_str[i] = '\0';
-	
-	printf("%s", new_str);
-	return (new_str);
 }
 
 char	*ft_strchr(const char *s, int c)
