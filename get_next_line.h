@@ -6,7 +6,7 @@
 /*   By: lancelot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 16:28:59 by lancelot          #+#    #+#             */
-/*   Updated: 2022/07/09 15:02:30 by lancelot         ###   ########.fr       */
+/*   Updated: 2022/07/09 17:44:58 by lancelot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-# define BUFFER_SIZE 5
 
 void	search_line(char**, char**, char **);
 size_t	ft_strlcpy(char*, const char*, size_t);

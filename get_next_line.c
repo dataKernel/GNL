@@ -6,7 +6,7 @@
 /*   By: lancelot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 16:27:22 by lancelot          #+#    #+#             */
-/*   Updated: 2022/07/09 16:15:47 by lancelot         ###   ########.fr       */
+/*   Updated: 2022/07/11 18:12:30 by lancelot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ char	*ft_cut_left(char *str)
 	i = 0;
 	while(str[i] != '\n' && str[i])
 		i++;
+	if(i == 0)
+		return(NULL);
 	size_str_malloc = i + 2;
 	new_str = (char *)malloc(size_str_malloc * sizeof (char));
 	ft_strlcpy(new_str, str, size_str_malloc);
@@ -54,6 +56,8 @@ char	*ft_cut_right(char *str)
 			size_str_malloc++;
 		i++;
 	}
+	if(!check)
+		return(NULL);
 	size_str_malloc++;
 	new_str = (char *)malloc(size_str_malloc * sizeof (char));
 	ft_strlcpy(new_str, str + indice, size_str_malloc);
@@ -63,6 +67,11 @@ char	*ft_cut_right(char *str)
 
 void	search_line(char **line, char **res, char **temp_line)
 {
+	if(*line == NULL)
+	{
+		*res = NULL;
+		return ;
+	}
 	*res = ft_cut_left(*line);
 	*temp_line = *line;
 	*line = ft_cut_right(*line);
@@ -87,24 +96,25 @@ char	*get_next_line(int fd)
 			return(NULL);
 		buffer[bytes_read] = '\0';
 		temp_line = line;
-		line = ft_strjoin(temp_line, buffer);
+		if(bytes_read != 0)
+			line = ft_strjoin(temp_line, buffer);
 		free(temp_line);
 	}
-	printf("check bytes --> %i\n", bytes_read);
 	search_line(&line, &res, &temp_line);
 	return(res);
 }
 
 int		main(void)
 {
-	int		res_open;
-	char	*result;
+	int		fd;
+	char	*str;
 
-	res_open = open("./test", O_RDONLY);
-	result = get_next_line(res_open);
-	result = get_next_line(res_open);
-	result = get_next_line(res_open);
-	result = get_next_line(res_open);
-	printf("%s", result);
+	fd = open("./gnlTester/files/nl", O_RDWR);
+	str = get_next_line(fd);
+	printf("%p\n", str);
+	str = get_next_line(fd);
+	printf("%p\n", str);
+	//................
 	return(0);
 }
+
