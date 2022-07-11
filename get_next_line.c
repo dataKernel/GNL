@@ -6,7 +6,7 @@
 /*   By: lancelot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 16:27:22 by lancelot          #+#    #+#             */
-/*   Updated: 2022/07/11 18:12:30 by lancelot         ###   ########.fr       */
+/*   Updated: 2022/07/11 19:22:11 by lancelot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,10 @@ char	*ft_cut_left(char *str)
 	i = 0;
 	while(str[i] != '\n' && str[i])
 		i++;
-	if(i == 0)
+	if(i == 0 && str[i] == 0)
 		return(NULL);
 	size_str_malloc = i + 2;
+	printf("%i\n", size_str_malloc);
 	new_str = (char *)malloc(size_str_malloc * sizeof (char));
 	ft_strlcpy(new_str, str, size_str_malloc);
 	
@@ -46,17 +47,16 @@ char	*ft_cut_right(char *str)
 	i = 0;
 	while(str[i])
 	{
+		if(check == true)
+			size_str_malloc++;
 		if(str[i] == '\n')
 		{
 			check = true;
-			i++;
 			indice = i;
 		}
-		if(check == true)
-			size_str_malloc++;
 		i++;
 	}
-	if(!check)
+	if(!check || size_str_malloc == 0)
 		return(NULL);
 	size_str_malloc++;
 	new_str = (char *)malloc(size_str_malloc * sizeof (char));
@@ -96,14 +96,15 @@ char	*get_next_line(int fd)
 			return(NULL);
 		buffer[bytes_read] = '\0';
 		temp_line = line;
-		if(bytes_read != 0)
-			line = ft_strjoin(temp_line, buffer);
+		if(bytes_read == 0)
+			break;
+		line = ft_strjoin(temp_line, buffer);
 		free(temp_line);
 	}
 	search_line(&line, &res, &temp_line);
 	return(res);
 }
-
+/*
 int		main(void)
 {
 	int		fd;
@@ -111,10 +112,11 @@ int		main(void)
 
 	fd = open("./gnlTester/files/nl", O_RDWR);
 	str = get_next_line(fd);
+	printf("%s\n", str);
 	printf("%p\n", str);
 	str = get_next_line(fd);
 	printf("%p\n", str);
 	//................
 	return(0);
 }
-
+*/
