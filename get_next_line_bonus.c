@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lancelot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 16:27:22 by lancelot          #+#    #+#             */
-/*   Updated: 2022/07/26 20:38:20 by lancelot         ###   ########.fr       */
+/*   Updated: 2022/07/26 20:39:03 by lancelot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <fcntl.h>
 #include <stdbool.h>
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*ft_cut_left(char *str)
 {
@@ -76,27 +76,27 @@ void	search_line(char **line, char **res, char **temp_line)
 
 char	*get_next_line(int fd)
 {
-	static char		*line = NULL;
+	static char		*line[MAXFD] = {NULL};
 	char			*temp_line;
 	char			*res;
 	char			buffer[BUFFER_SIZE + 1];
 	int				bytes_read;
 
 	bytes_read = BUFFER_SIZE;
-	if (fd < 0 || fd > 1023 || BUFFER_SIZE <= 0)
+	if (fd < 0 || fd > MAXFD - 1 || BUFFER_SIZE <= 0)
 		return (NULL);
-	while (bytes_read > 0 && !ft_strchr(line, '\n'))
+	while (bytes_read > 0 && !ft_strchr(line[fd], '\n'))
 	{
 		bytes_read = read(fd, buffer, BUFFER_SIZE);
 		if (bytes_read == -1)
 			return (NULL);
 		buffer[bytes_read] = '\0';
-		temp_line = line;
+		temp_line = line[fd];
 		if (bytes_read == 0)
 			break ;
-		line = ft_strjoin(temp_line, buffer);
+		line[fd] = ft_strjoin(temp_line, buffer);
 		free(temp_line);
 	}
-	search_line(&line, &res, &temp_line);
+	search_line(&line[fd], &res, &temp_line);
 	return (res);
 }
