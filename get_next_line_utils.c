@@ -6,7 +6,7 @@
 /*   By: lancelot <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 18:06:20 by lancelot          #+#    #+#             */
-/*   Updated: 2022/07/26 15:19:25 by lancelot         ###   ########.fr       */
+/*   Updated: 2022/08/08 16:18:25 by lancelot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,15 +43,12 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 	{
 		count++;
 	}
-	if (dstsize >= 0)
+	while (src[i] != '\0' && i < (dstsize - 1))
 	{
-		while (src[i] != '\0' && i < (dstsize - 1))
-		{
-			dst[i] = src[i];
-			i++;
-		}
-		dst[i] = '\0';
+		dst[i] = src[i];
+		i++;
 	}
+	dst[i] = '\0';
 	return (count);
 }
 
